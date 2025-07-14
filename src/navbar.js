@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 function Navbar() {
 
   return (
@@ -25,13 +23,13 @@ function Navbar() {
           <a className="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Ride Calendar</a>
+          <a className="nav-link" href="/home">Ride Calendar</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Suggest Rides</a>
+          <a className="nav-link" href="/suggest-rides">Suggest Rides</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Contact</a>
+          <a className="nav-link" href="/contact">Contact</a>
         </li>
       </ul>
     </div>
