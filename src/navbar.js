@@ -3,7 +3,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#"  >Name Here</a>
+    <a className="navbar-brand" href="/title"  >Name Here</a>
 
     <button
       className="navbar-toggler"
@@ -20,10 +20,10 @@ function Navbar() {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav ms-auto">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+          <a className="nav-link active" aria-current="page" href="/home">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/home">Ride Calendar</a>
+          <a className="nav-link" href="/ride-calendar">Ride Calendar</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="/suggest-rides">Suggest Rides</a>
