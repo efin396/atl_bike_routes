@@ -1,0 +1,74 @@
+[
+    {   
+        "name": "Mash To Brash",
+        "route": "/routes/m2b.gpx",
+        "description": "",
+        "time":""
+    }, 
+    {   
+        "name": "Get Rad ATL",
+        "route": null,
+        "description": "",
+        "time":"",
+        "start_location": [33.7564629535697, -84.36477393002343]
+    },
+    {
+        "name": "Tuesday Marietta Crit",
+        "route": "/routes/tnc.gpx",
+        "description": "",
+        "time":""
+    },
+    {
+        "name": "Pizza",
+        "route": "/routes/pizza.gpx",
+        "description": "",
+        "time":""
+    },
+    {
+        "name": "Tucker",
+        "route": "/routes/tucker.gpx",
+        "description": "",
+        "time":""
+    },
+    {
+        "name": "Airport",
+        "route": "/routes/airport.gpx",
+        "description": "",
+        "time":""
+    },
+    {   
+        "name": "Nasty Northlake",
+        "route": "/routes/nasty-northlake.gpx",
+        "description": "",
+        "time":""
+    },
+    {
+        "name": "Thrusday Night Roll",
+        "route": "",
+        "description": "",
+        "time":"",
+        "start_location": [33.741622932897364, -84.39375066071091]
+    },
+    {
+        "name": "Silverlake",
+        "route": "/routes/silverlake.gpx",
+        "description": "",
+        "time":""
+    },
+    {
+        "name": "Tango",
+        "route": "/routes/Tango.gpx",
+        "description": ""
+    },
+
+    {
+        "name": "Tap Out",
+        "route": "/routes/TapOut.gpx",
+        "description": ""
+    },
+    {
+        "name": "Four Oaks",
+        "route": "/routes/Four_Oaks.gpx",
+        "description": "" 
+    }
+]
