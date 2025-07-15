@@ -8,7 +8,6 @@ import L from 'leaflet';
 import 'leaflet-gpx';
 import { LocateControl } from "leaflet.locatecontrol";
 import "leaflet.locatecontrol/dist/L.Control.Locate.min.css";
-import 'leaflet-clicktolerance';
 import './App.css';
 
 function App() {
@@ -57,8 +56,7 @@ function App() {
             color: randColor,
             weight: 3,
             opacity: 0.8,
-            className: 'gpx-track',
-            clickTolerance: 60,
+            className: 'gpx-track'
           },
           markers: {
             startIcon: null,
@@ -70,6 +68,7 @@ function App() {
 
         gpx.on('loaded', function (e) {
           const points = e.target.getLayers()[0].getLatLngs();
+          
           if (!points.length) return;
 
           const start = points[0];
