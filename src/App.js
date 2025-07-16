@@ -48,7 +48,15 @@ function App() {
 
     //Iter thru each ride and populate in map with a random color
     data.forEach(ride => {
-      const randColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+      function generateAccessibleColor() {
+        const hue = Math.floor(Math.random() * 360); // full hue range
+        const saturation = 80;  // strong color
+        const lightness = 40;   // not too light (avoid <60 on light maps)
+
+        return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+      }
+
+      const randColor = generateAccessibleColor();
       if (ride.route) {
         const gpx = new L.GPX(ride.route, {
           async: true,
@@ -67,14 +75,45 @@ function App() {
         const originalWeight = gpx.options.weight || 3;
 
         gpx.on('loaded', function (e) {
-          const points = e.target.getLayers()[0].getLatLngs();
-          
+          const polyline = e.target.getLayers()[0]
+          const points = polyline.getLatLngs();
+
           if (!points.length) return;
 
           const start = points[0];
           const end = points[points.length - 1];
 
-          // Add large circle at start
+          const bufferLine = L.polyline(points, {
+            color: 'transparent',
+            weight: 50, // large clickable area
+            opacity: 0,
+            className: 'gpx-click-buffer'
+          }).addTo(map.current);
+
+          gpx.bindPopup(`
+            <div class="popup">
+              <strong>${ride.name ? `Name: ${ride.name}</strong><br/>` : ''}
+              Distance: ~${Math.round(3 * (gpx.get_distance() / (1000 * 5)))} miles
+            </div>`,  { autoPan: false });
+          bufferLine
+            .on('mouseover', function () {
+              polyline.setStyle({ weight: originalWeight + 6 });
+              gpx.openPopup();
+            })
+            .on('mouseout', function () {
+              polyline.setStyle({ weight: originalWeight });
+              gpx.closePopup();
+            })
+            .on('click', function () {
+              const distance = Math.round(3 * (gpx.get_distance() / (1000 * 5)));
+              setSelectedRide({
+                name: ride.name,
+                distance,
+                description: ride.description || "No description provided."
+              });
+            });
+
+          // Add circle  at start & flag icon at end
           L.circle(start, {
             radius: 5,
             color: randColor,
@@ -95,12 +134,7 @@ function App() {
             })
           }).addTo(map.current);
 
-          gpx.bindPopup(`
-            <div class="popup">
-              <strong>${ride.name ? `Name: ${ride.name}</strong><br/>` : ''}
-              Distance: ~${Math.round(3 * (gpx.get_distance() / (1000 * 5)))} miles
-            </div>
-          `);
+
         }).on('mouseover', function () {
           this.setStyle({ weight: originalWeight + 10 });
           gpx.openPopup();
@@ -110,12 +144,13 @@ function App() {
           gpx.closePopup();
         })
           .on('click', function () {
-          const distance = Math.round(3 * (gpx.get_distance() / (1000 * 5))); // your calc logic
-                      setSelectedRide({
-                        name: ride.name,
-                        distance,
-                        description: ride.description || "No description provided."
-                      });})
+            const distance = Math.round(3 * (gpx.get_distance() / (1000 * 5))); // your calc logic
+            setSelectedRide({
+              name: ride.name,
+              distance,
+              description: ride.description || "No description provided."
+            });
+          })
           .addTo(map.current);
 
 
@@ -133,7 +168,7 @@ function App() {
 
         no_route.bindPopup(`
           <strong>${ride.name ? `Name: ${ride.name}</strong><br/>` : ''}
-        `);
+        ` ,  { autoPan: false });
 
         no_route.on('mouseover', function () {
           this.setRadius(originalRadius + 500);
@@ -147,7 +182,8 @@ function App() {
               name: ride.name,
               distance: "alternating route",
               description: ride.description || "No description provided.",
-                });})
+            });
+          })
 
       }
     });
@@ -160,8 +196,8 @@ function App() {
     <div className="App">
       <Navbar />
       <div ref={mapRef} style={{ height: '94vh' }}>
-      <SidePanel ride={selectedRide} onClose={() => setSelectedRide(null)} />
-        </div>
+        <SidePanel ride={selectedRide} onClose={() => setSelectedRide(null)} />
+      </div>
     </div>
   );
 }

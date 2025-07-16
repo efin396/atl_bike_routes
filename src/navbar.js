@@ -3,7 +3,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
-    <a className="navbar-brand" href="/title"  >Name Here</a>
+    {/* <a className="navbar-brand" href="/title"  >Name Here</a> */}
 
     <button
       className="navbar-toggler"
