@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 function Navbar() {
 
   return (
@@ -17,23 +18,23 @@ function Navbar() {
       <span className="navbar-toggler-icon"></span>
     </button>
 
-    <div className="collapse navbar-collapse" id="navbarNav">
-      <ul className="navbar-nav ms-auto">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/home">Home</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/ride-calendar">Ride Calendar</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/suggest-rides">Suggest Rides</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/contact">Contact</a>
-        </li>
-      </ul>
+     <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link className="nav-link active" to="">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/ride-calendar">Ride Calendar</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/suggest-rides">Suggest Rides</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </div>
     </div>
-  </div>
 </nav>
 
   );

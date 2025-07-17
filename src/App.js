@@ -1,21 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import { maptilerLayer, MapStyle } from "@maptiler/leaflet-maptilersdk";
 import data from './rides.json' with { type: 'json' };
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "leaflet/dist/leaflet.css";
 import Navbar from "./navbar";
 import SidePanel from "./sidepanel";
+import RideCalendar from "./rideCalendar";
 import L from 'leaflet';
 import 'leaflet-gpx';
 import { LocateControl } from "leaflet.locatecontrol";
 import "leaflet.locatecontrol/dist/L.Control.Locate.min.css";
 import './App.css';
-
-function App() {
-  const mapRef = useRef(null);
+function HomePage({ selectedRide, setSelectedRide }){
+ const mapRef = useRef(null);
   const map = useRef(null);
-  const [selectedRide, setSelectedRide] = useState(null);
 
-  useEffect(() => {
+    useEffect(() => {
     const bounds = [
       [33.4, -84.6], // Southwest corner
       [34.1, -84.1]  // Northeast corner
@@ -189,15 +189,31 @@ function App() {
     });
 
 
-  }, []);
+  }, [setSelectedRide]);
+return (
+    <>
+      <div ref={mapRef} style={{ height: '94vh' }}></div>
+      <SidePanel ride={selectedRide} onClose={() => setSelectedRide(null)} />
+    </>
+  );
+}
 
+function App() {
+ 
+  const [selectedRide, setSelectedRide] = useState(null);
 
   return (
     <div className="App">
+    <Router>
       <Navbar />
-      <div ref={mapRef} style={{ height: '94vh' }}>
-        <SidePanel ride={selectedRide} onClose={() => setSelectedRide(null)} />
-      </div>
+      <Routes>
+        <Route
+          path=""
+          element={<HomePage selectedRide={selectedRide} setSelectedRide={setSelectedRide} />}
+        />
+        <Route path="/ride-calendar" element={<RideCalendar />} />
+      </Routes>
+    </Router>
     </div>
   );
 }
