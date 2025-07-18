@@ -1,5 +1,6 @@
-import React from 'react';
+import data from './rides.json' with { type: 'json' };
 import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { generateRideEvents } from './calendarUtils';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -7,25 +8,20 @@ const localizer = momentLocalizer(moment);
 
 function RideCalendar() {
   const today = new Date();
+        function generateAccessibleColor() {
+        const hue = Math.floor(Math.random() * 360); // full hue range
+        const saturation = 80;  // strong color
+        const lightness = 40;   // not too light (avoid <60 on light maps)
 
-  const events = [
-    {
-      title: 'Morning Ride',
-      start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 7),
-      end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 9),
-      color: '#1e90ff', // blue
-    },
-    {
-      title: 'Evening Ride',
-      start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 17),
-      end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 19),
-      color: '#ff6347', // tomato
-    },
-  ];
+        return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+      }
 
+     
+
+  const events = generateRideEvents(data);
   // This function tells the calendar how to style each event
   const eventStyleGetter = (event) => {
-    const backgroundColor = event.color || '#3174ad'; // fallback color
+    const backgroundColor = generateAccessibleColor();
     const style = {
       backgroundColor,
       borderRadius: '6px',

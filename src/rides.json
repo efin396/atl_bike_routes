@@ -2,73 +2,89 @@
     {   
         "name": "Mash To Brash",
         "route": "/routes/m2b.gpx",
+        "day": "Wednesday",
+        "time":"6:15",
         "description": "",
-        "time":""
+        "start_location": ""
+
     }, 
     {   
-        "name": "Get Rad ATL",
+        "name": "Tasty Tuesday",
         "route": null,
         "description": "",
-        "time":"",
+        "day": "Tuesday",
+        "time":"18:30",
         "start_location": [33.7564629535697, -84.36477393002343]
     },
     {
         "name": "Tuesday Marietta Crit",
         "route": "/routes/tnc.gpx",
         "description": "",
-        "time":""
+        "day": "Tuesday",
+        "time":"18:30"
     },
     {
         "name": "Pizza",
         "route": "/routes/pizza.gpx",
         "description": "",
-        "time":""
+        "day": "Thursday",
+        "time":"18:00"
     },
     {
         "name": "Tucker",
         "route": "/routes/tucker.gpx",
         "description": "",
-        "time":""
+        "day": "Saturday",
+        "time":"8:00"
     },
     {
         "name": "Airport",
         "route": "/routes/airport.gpx",
         "description": "",
-        "time":""
+        "day": "Sunday",
+        "time":"10:00"
     },
     {   
         "name": "Nasty Northlake",
         "route": "/routes/nasty-northlake.gpx",
         "description": "",
-        "time":""
+        "day": "Wednesday",
+        "time":"18:00"
     },
     {
         "name": "Thrusday Night Roll",
         "route": "",
         "description": "",
-        "time":"",
+        "day": "Thursday",
+        "time":"20:00",
         "start_location": [33.741622932897364, -84.39375066071091]
     },
     {
         "name": "Silverlake",
         "route": "/routes/silverlake.gpx",
         "description": "",
-        "time":""
+        "day": "Saturday",
+        "time":"8:00"
     },
     {
         "name": "Tango",
         "route": "/routes/Tango.gpx",
-        "description": ""
+        "day": "Thursday",
+        "time":"18:30"
     },
 
     {
         "name": "Tap Out",
         "route": "/routes/TapOut.gpx",
-        "description": ""
+        "description": "",
+        "day": "Tuesday",
+        "time":"17:00"
     },
     {
         "name": "Four Oaks",
         "route": "/routes/Four_Oaks.gpx",
-        "description": "" 
+        "description": "",
+        "day": "Tuesday",
+        "time":"17:30"
     }
 ]
